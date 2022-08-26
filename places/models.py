@@ -30,3 +30,22 @@ class Place(models.Model):
 
     def __str__(self):
         return str(self.title)
+
+
+class Image (models.Model):
+    number = models.IntegerField(
+        'Номер картинки',
+    )
+    title = models.CharField(
+        'Название',
+        max_length=200,
+        blank=False,
+    )
+    image = models.ImageField(
+        'Картинка',
+        blank=False,
+        null=False
+    )
+
+    def __str__(self):
+        return f"{str(self.number)} {str(self.title)}"
