@@ -36,16 +36,17 @@ class Image (models.Model):
     number = models.IntegerField(
         'Номер картинки',
     )
-    title = models.CharField(
-        'Название',
-        max_length=200,
-        blank=False,
-    )
     image = models.ImageField(
         'Картинка',
         blank=False,
         null=False
     )
+    place = models.ForeignKey(
+        Place,
+        on_delete=models.CASCADE,
+        verbose_name='Место',
+        related_name='places'
+    )
 
     def __str__(self):
-        return f"{str(self.number)} {str(self.title)}"
+        return f"{str(self.number)} {str(self.place)}"
