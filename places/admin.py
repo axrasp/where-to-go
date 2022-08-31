@@ -1,12 +1,12 @@
 from django.contrib import admin
 from .models import Place, Image
-from django.utils.safestring import mark_safe
 from django.utils.html import format_html
+from adminsortable2.admin import SortableTabularInline, SortableAdminBase
 
 
-class PlaceImageInline(admin.TabularInline):
+
+class PlaceImageInline(SortableTabularInline, admin.TabularInline):
     model = Image
-    raw_id_fields = ['place', ]
     readonly_fields = ['place_preview']
     fields = ('image', 'place_preview', 'number')
 
@@ -17,7 +17,7 @@ class PlaceImageInline(admin.TabularInline):
         )
 
 
-class PlaceAdmin(admin.ModelAdmin):
+class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
     inlines = [PlaceImageInline]
 
 

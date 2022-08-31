@@ -50,3 +50,6 @@ class Image (models.Model):
 
     def __str__(self):
         return f"{str(self.number)} {str(self.place)}"
+
+    class Meta:
+        ordering = ["number"]
