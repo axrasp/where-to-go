@@ -22,7 +22,7 @@ class Place(models.Model):
         max_length=20,
         blank=True
     )
-    ltd = models.CharField(
+    lat = models.CharField(
         'Широта',
         max_length=20,
         blank=True
@@ -45,7 +45,7 @@ class Image (models.Model):
         Place,
         on_delete=models.CASCADE,
         verbose_name='Место',
-        related_name='places'
+        related_name='imgs'
     )
 
     def __str__(self):

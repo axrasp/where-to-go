@@ -21,6 +21,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path("places/<int:place_id>/", views.get_place_detail, name='place'),
     path('admin/', admin.site.urls),
     path('', views.index)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
