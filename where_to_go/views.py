@@ -27,6 +27,7 @@ def index(request):
     features = []
     places = Place.objects.all()
     for place in places:
+        details_url = reverse("place", args=(place.id, ))
         feature = {
             "type": "Feature",
             "geometry": {
@@ -36,14 +37,16 @@ def index(request):
             "properties": {
                 "title": place.title,
                 "placeId": place.id,
-                "detailsUrl": reverse("place", args=(place.id, ))
+                "detailsUrl": details_url
             }
         }
         features.append(feature)
+
     map_places = {
         "map_places": {
             "type": "FeatureCollection",
             "features": features
         }
     }
+
     return render(request, "index.html", context=map_places)
