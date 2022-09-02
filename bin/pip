@@ -1,4 +1,4 @@
-#!/Users/alexanderraspopin/PycharmProjects/where_to_go/bin/python
+#!/Users/alexanderraspopin/PycharmProjects/where-to-go/bin/python3.10
 # -*- coding: utf-8 -*-
 import re
 import sys
