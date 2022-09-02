@@ -25,7 +25,7 @@ class Place(models.Model):
     )
 
     def __str__(self):
-        return str(self.title)
+        return self.title
 
 
 class Image (models.Model):
@@ -43,7 +43,7 @@ class Image (models.Model):
     )
 
     def __str__(self):
-        return f"{str(self.number)} {str(self.place)}"
+        return f"{self.number} {self.place}"
 
     class Meta:
         ordering = ["number"]
