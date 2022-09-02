@@ -5,8 +5,7 @@ from tinymce.models import HTMLField
 class Place(models.Model):
     title = models.CharField(
         'Название',
-        max_length=200,
-        blank=False,
+        max_length=200
     )
     description_short = models.TextField(
         'Краткое описание',
@@ -19,12 +18,10 @@ class Place(models.Model):
     lng = models.CharField(
         'Долгота',
         max_length=20,
-        blank=True
     )
     lat = models.CharField(
         'Широта',
         max_length=20,
-        blank=True
     )
 
     def __str__(self):
@@ -37,8 +34,6 @@ class Image (models.Model):
     )
     image = models.ImageField(
         'Картинка',
-        blank=False,
-        null=False
     )
     place = models.ForeignKey(
         Place,
