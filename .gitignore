@@ -4,6 +4,7 @@ pyvenv.cfg
 *.pot
 *.pyc
 __pycache__/
+assets
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
