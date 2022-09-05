@@ -68,4 +68,4 @@ python manage.py load_place -j demo.json
 ```
 
 ## Пример реализации
-[pythonanywhere](https://axaxrasp.pythonanywhere.com/)
+[pythonanywhere](https://axrasp.pythonanywhere.com/)
