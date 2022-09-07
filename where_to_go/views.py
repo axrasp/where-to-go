@@ -24,23 +24,19 @@ def get_place_detail(request, place_id):
 
 
 def index(request):
-    features = []
     places = Place.objects.all()
-    for place in places:
-        details_url = reverse("place", args=(place.id, ))
-        feature = {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [place.lng, place.lat]
-            },
-            "properties": {
-                "title": place.title,
-                "placeId": place.id,
-                "detailsUrl": details_url
-            }
+    features = [{
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [place.lng, place.lat]
+        },
+        "properties": {
+            "title": place.title,
+            "placeId": place.id,
+            "detailsUrl": reverse("place", args=(place.id, ))
         }
-        features.append(feature)
+    } for place in places]
 
     map_places = {
         "map_places": {
