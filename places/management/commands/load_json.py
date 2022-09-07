@@ -47,7 +47,7 @@ class Command(BaseCommand):
             '-p',
             '--path',
             action='store',
-            help='Импорт локаций в формат JSON (локальный путь). '
+            help='Импорт локаций в формате JSON (локальный путь). '
                  'Пример: python3 manage.py -j your_json_path'
         )
 
@@ -55,6 +55,6 @@ class Command(BaseCommand):
             '-u',
             '--url',
             action='store',
-            help='Импорт локаций в формат JSON (URL). '
+            help='Импорт локаций в формате JSON (URL). '
                  'Пример: python3 manage.py -u http://your-url.com'
         )

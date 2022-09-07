@@ -6,9 +6,8 @@
 
 - Скачайте код
 - Установите зависимости командой `pip install -r requirements.txt`
-- Создайте файл базы данных и сразу примените все миграции командой `python3 manage.py migrate`
 - Создайте файл с переменными окружения.
-
+- Создайте файл базы данных и сразу примените все миграции командой `python3 manage.py migrate`
 
 ### Переменные окружения .env
 
@@ -25,7 +24,7 @@ DATABASE_URL=
 - `SECRET_KEY` — секретный ключ проекта, его можно получуить следуюющим образом:
 
 ```
-python .\manage.py shell
+python manage.py shell
 >>> from django.core.management.utils import get_random_secret_key
 >>> get_random_secret_key()
 ```
@@ -40,11 +39,15 @@ python .\manage.py shell
 Запустите сервер командой `python3 manage.py runserver`  
 
 ## Загрузка данных
+
 Реализована возможность загрузки данных с помощью json файла:
 ```
-python manage.py load_place -j place.json
+python manage.py load_place -p your_json_path  #в случае локального файла
+python manage.py load_place -u http://your-url.com  #в случае сетевого расположения файла (URL)
 ```
-`place.json` - любой локальный или сетевой файл вида:
+
+Файл JSON должен иметь вид:
+
 ```
 ["places":{
 	"title": string,
@@ -58,6 +61,7 @@ python manage.py load_place -j place.json
 		"lat": float
 	}
 }]
+
 ```
 ### Загрузка демо данных
 
