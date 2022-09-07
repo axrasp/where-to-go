@@ -11,13 +11,14 @@
 
 ### Переменные окружения .env
 
-Создайте файл ``.env`` в корневой папке следующего вида:
+Создайте файл ``.env`` в корневой папке следующего вида (пример файла ``example.env``):
 
 ```
-DEBUG=
-SECRET_KEY=
-ALLOWED_HOSTS=
-DATABASE_URL=
+DEBUG='False'
+SECRET_KEY='aywt$0b_i415ppej$-2(g26&+d-0nAx+r*vb(sclv2#0tpfnhmq'
+STATIC_ROOT='assets'
+ALLOWED_HOSTS=''
+DATABASE_URL='sqlite:///db.sqlite3'
 ```
 
 - `DEBUG` — дебаг-режим. Поставьте True, чтобы увидеть отладочную информацию в случае ошибки.
