@@ -15,11 +15,11 @@ class Place(models.Model):
         'Полное описание',
         blank=True
     )
-    lng = models.CharField(
+    lng = models.FloatField(
         'Долгота',
         max_length=20,
     )
-    lat = models.CharField(
+    lat = models.FloatField(
         'Широта',
         max_length=20,
     )
