@@ -6,12 +6,12 @@ from django.core.management.base import BaseCommand
 from places.models import Image, Place
 
 
-def load_json(json_path: str):
-    try:
+def load_json(json_path: str, url=False):
+    if url:
         response = requests.get(json_path)
         response.raise_for_status()
         places = response.json()
-    except requests.exceptions.MissingSchema:
+    else:
         with open(json_path, 'r') as plcs:
             places = json.load(plcs)
 
@@ -28,21 +28,33 @@ def load_json(json_path: str):
         for indx, image_url in enumerate(place['imgs'], start=1):
             image = requests.get(image_url)
             image.raise_for_status()
-            new_image = Image.objects.create(place=new_place, number=indx)
-            new_image.image.save(
-                f'{new_place.title}_{indx}.jpg', ContentFile(image.content), save=True
+            Image.objects.create(
+                place=new_place,
+                number=indx,
+                image=ContentFile(image.content)
             )
 
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        load_json(options['json'])
+        if options['url']:
+            load_json(options['url'], url=True)
+        load_json(options['path'])
+
 
     def add_arguments(self, parser):
         parser.add_argument(
-            '-j',
-            '--json',
+            '-p',
+            '--path',
             action='store',
-            help='Импорт локаций в формат JSON (URL или путь). '
+            help='Импорт локаций в формат JSON (локальный путь). '
                  'Пример: python3 manage.py -j your_json_path'
+        )
+
+        parser.add_argument(
+            '-u',
+            '--url',
+            action='store',
+            help='Импорт локаций в формат JSON (URL). '
+                 'Пример: python3 manage.py -u http://your-url.com'
         )
