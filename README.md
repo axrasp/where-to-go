@@ -45,31 +45,31 @@ python manage.py shell
 ```
 python manage.py load_place -p your_json_path  #в случае локального файла
 python manage.py load_place -u http://your-url.com  #в случае сетевого расположения файла (URL)
+python manage.py load_place -d demo.json #загружает демо-данные из файла demo.json
+
 ```
 
 Файл JSON должен иметь вид:
 
 ```
-["places":{
-	"title": string,
-	"imgs": [
-		link,
-	],
-	"description_short": text
-	"description_long": html,
-	"coordinates": {
-		"lng": float,
-		"lat": float
-	}
-}]
-
+{
+    "title": string,
+    "imgs": [
+        links,
+    ],
+    "description_short": text
+    "description_long": html,
+    "coordinates": {
+        "lng": float,
+        "lat": float
+}
 ```
 ### Загрузка демо данных
 
 Загрузите демо-данные командой:
 
 ```
-python manage.py load_place -j demo.json
+python manage.py load_place --demo demo.json
 ```
 
 ## Пример реализации
