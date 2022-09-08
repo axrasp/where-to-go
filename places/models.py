@@ -1,5 +1,7 @@
 from django.db import models
 from tinymce.models import HTMLField
+from django.db.models import UniqueConstraint
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Place(models.Model):
@@ -17,12 +19,27 @@ class Place(models.Model):
     )
     lng = models.FloatField(
         'Долгота',
-        max_length=20,
+        validators=[
+            MaxValueValidator(-180),
+            MinValueValidator(180)
+        ]
+
     )
     lat = models.FloatField(
         'Широта',
-        max_length=20,
+        validators=[
+            MaxValueValidator(-90),
+            MinValueValidator(90)
+        ]
     )
+
+    class Meta:
+        constraints = [
+            UniqueConstraint(
+                fields=['title', 'lat','lng'],
+                name='unique_place',
+            )
+        ]
 
     def __str__(self):
         return self.title
