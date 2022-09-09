@@ -65,7 +65,7 @@ class Command(BaseCommand):
             '--path',
             action='store',
             help='Импорт локаций в формате JSON (локальный путь). '
-                 'Пример: python3 manage.py -j your_json_path'
+                 'Пример: python3 manage.py -p your_json_path'
         )
 
         parser.add_argument(
