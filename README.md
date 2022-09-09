@@ -17,6 +17,7 @@
 DEBUG='False'
 SECRET_KEY='aywt$0b_i415ppej$-2(g26&+d-0nAx+r*vb(sclv2#0tpfnhmq'
 STATIC_ROOT='assets'
+STATIC_ROOT_DEPLOY='/static/'
 ALLOWED_HOSTS=''
 DATABASE_URL='sqlite:///db.sqlite3'
 ```
